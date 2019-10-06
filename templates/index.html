@@ -64,7 +64,7 @@
             <ul id="link-nav" class="nav">
                 <li class="active sidebar-main-item">
                     <a data-toggle="collapse" href="#jobsLink" aria-expanded="true" class="sidebar-main-link">
-                        <i class="fas fa-code"></i><span>View Jobs 2020</span><b class="caret"></b>
+                        <i class="fas fa-code"></i><span>View Jobs</span><b class="caret"></b>
                     </a>
                     <div class="collapse show" id="jobsLink">
                         <ul class="nav">
@@ -90,8 +90,14 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
         </nav>
+        <div class="content">
+            <div class="container-fluid">
+                {% for j in jobs %}
+                <p>{{ j }}</p>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 
 </div>
