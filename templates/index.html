@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>College Careers</title>
+
+    <!-- using online links -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</head>
+
+<body>
+<div class="wrapper">
+    <div id="sidebar">
+        <div class="logo">
+            <a href="/">College Careers</a>
+        </div>
+        <div class="sidebar-wrapper">
+            <div class="user">
+                {% if user.is_authenticated %}
+                    <div class="info"><a data-toggle="collapse" href="#login-collapse" class="collapsed"><img class="avatar" src="{{ user.socials.avatar }}"/>{{ user.first_name }}<b class="caret"></b></a>
+                    </div>
+                    <div class="collapse login-links" id="login-collapse">
+                        <ul class="nav">
+                            <li>
+                                <a href="{% url 'users:logout' %}">
+                                    <span class="fas fa-power-off"></span><span>logout</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                {% else %}
+                <div class="info">
+                    <a data-toggle="collapse" href="#login-collapse" class="collapsed"><span class="fa fa-user"></span>login<b class="caret"></b></a>
+                </div>
+                <div class="collapse login-links" id="login-collapse">
+                    <ul class="nav">
+                        <li>
+                            <a href="{% url 'social:begin' 'google-oauth2' %}">
+                                <span class="fa fa-google"></span><span>login with google</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'social:begin' 'facebook' %}">
+                                <span class="fa fa-facebook"></span><span>login with facebook</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                {% endif %}
+
+            </div>
+
+            <ul id="link-nav" class="nav">
+                <li class="active sidebar-main-item">
+                    <a data-toggle="collapse" href="#jobsLink" aria-expanded="true" class="sidebar-main-link">
+                        <i class="fas fa-code"></i><span>View Jobs 2020</span><b class="caret"></b>
+                    </a>
+                    <div class="collapse show" id="jobsLink">
+                        <ul class="nav">
+                            <li class="sidebar-second-item">
+                                <a href="../dashboard/overview.html">
+                                    <i class="fas fa-user-graduate"></i><span>New Grads</span>
+                                </a>
+                            </li>
+                            <li class="active sidebar-second-item">
+                                <a href="../dashboard/stats.html">
+                                    <i class="fas fa-book-reader"></i><span>Internships</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="main-panel">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </nav>
+    </div>
+
+</div>
+</body>
+
+</html>
